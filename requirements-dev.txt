@@ -1,0 +1,10 @@
+-r requirements.txt
+
+black
+flake8
+reorder-python-imports
+pre-commit
+mypy
+pytest
+pytest-vcr
+types-requests
