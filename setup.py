@@ -20,7 +20,7 @@ def get_file_text(file_name):
 
 setup(
     name="edusign",
-    version="0.0.1",
+    version="0.0.3",
     author="Jules Lasne",
     author_email="jules.lasne@gmail.com",
     url="https://github.com/seluj78/edusign",
@@ -37,7 +37,7 @@ setup(
     zip_safe=False,
     license="GNU GPL 3",
     install_requires=[
-        'requests>=2.28.1; python_version<="3.8"',
+        "requests",
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",

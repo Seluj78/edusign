@@ -7,7 +7,7 @@ from edusign.utils import EdusignAPIError
 
 
 class Groups(_EdusignAPI):
-    def create_group(self, group_name: str, student_list: List[str]):
+    def create(self, group_name: str, student_list: List[str]):
         """
         Create a group inside Edusign
 

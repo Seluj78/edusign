@@ -8,7 +8,7 @@ from edusign.utils import EdusignAPIError
 
 
 class Courses(_EdusignAPI):
-    def create_course(
+    def create(
         self,
         course_name: str,
         start_date: datetime.datetime,

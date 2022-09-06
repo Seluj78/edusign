@@ -5,7 +5,7 @@ from edusign.utils import EdusignAPIError
 
 
 class Professors(_EdusignAPI):
-    def create_professor(self, first_name: str, last_name: str, email_address: str):
+    def create(self, first_name: str, last_name: str, email_address: str):
         """
         Function to create a professor in Edusign
 
