@@ -61,3 +61,21 @@ class Students(_EdusignAPI):
             raise EdusignAPIError(response.status_code, response.text)
 
         return data["result"]
+
+    def get_by_id(self, student_id):
+        response = requests.get(
+            url=f"{self.BASE_URL}/student/{student_id}",
+            headers=self.HEADERS,
+        )
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            raise EdusignAPIError(response.status_code, response.text)
+
+        data = response.json()
+
+        if data["status"] != "success":
+            raise EdusignAPIError(response.status_code, response.text)
+
+        return data["result"]
