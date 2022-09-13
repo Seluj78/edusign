@@ -107,3 +107,21 @@ class Courses(_EdusignAPI):
     def has_professor_signed(self, course_id: str):
         data = self.get_by_id(course_id)
         return data["result"].get("PROFESSOR_SIGNATURE") is not None
+
+    def lock(self, course_id: str):
+        response = requests.get(
+            url=f"{self.BASE_URL}/course/lock/{course_id}",
+            headers=self.HEADERS,
+        )
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            raise EdusignAPIError(response.status_code, response.text)
+
+        data = response.json()
+
+        if data["status"] != "success":
+            raise EdusignAPIError(response.status_code, response.text)
+
+        return data["result"]
