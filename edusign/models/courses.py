@@ -94,3 +94,16 @@ class Courses(_EdusignAPI):
             raise EdusignAPIError(response.status_code, response.text)
 
         return data
+
+    def get_student_signature_status(self, course_id: str):
+        data = self.get_by_id(course_id)
+        signature_status = []
+        for student in data["result"]["STUDENTS"]:
+            signature_status.append(
+                (student.get("studentId"), True if student.get("signature") is not None else False)
+            )
+        return signature_status
+
+    def has_professor_signed(self, course_id: str):
+        data = self.get_by_id(course_id)
+        return data["result"].get("PROFESSOR_SIGNATURE") is not None
