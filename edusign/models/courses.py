@@ -45,8 +45,8 @@ class Courses(_EdusignAPI):
             "course": {
                 **{
                     "NAME": course_name,
-                    "START": start_date,
-                    "END": end_date,
+                    "START": start_date.strftime("%Y-%m-%dT%H:%M:%S.%f%z"),
+                    "END": end_date.strftime("%Y-%m-%dT%H:%M:%S.%f%z"),
                     "SCHOOL_GROUP": group_id,
                 },
                 **professors_list,
