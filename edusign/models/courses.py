@@ -125,3 +125,21 @@ class Courses(_EdusignAPI):
             raise EdusignAPIError(response.status_code, response.text)
 
         return data["result"]
+
+    def get_all(self):
+        response = requests.get(
+            url=f"{self.BASE_URL}/course",
+            headers=self.HEADERS,
+        )
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            raise EdusignAPIError(response.status_code, response.text)
+
+        data = response.json()
+
+        if data["status"] != "success":
+            raise EdusignAPIError(response.status_code, response.text)
+
+        return data["result"]
