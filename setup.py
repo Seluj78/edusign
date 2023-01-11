@@ -20,7 +20,7 @@ def get_file_text(file_name):
 
 setup(
     name="edusign",
-    version="0.0.7",
+    version="0.0.8",
     author="Jules Lasne",
     author_email="jules.lasne@gmail.com",
     url="https://github.com/seluj78/edusign",
