@@ -37,7 +37,7 @@ setup(
     zip_safe=False,
     license="GNU GPL 3",
     install_requires=[
-        "requests",
+        "requests==2.31.0",
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
