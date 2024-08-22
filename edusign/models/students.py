@@ -5,7 +5,7 @@ from edusign.utils import EdusignAPIError
 
 
 class Students(_EdusignAPI):
-    def create(self, first_name: str, last_name: str, email_address: str) -> int:
+    def create(self, first_name: str, last_name: str, email_address: str) -> str:
         """
         Function to create a student in Edusign
 
@@ -17,7 +17,7 @@ class Students(_EdusignAPI):
             The email address of the student
 
         :return:
-            An int that is the edusign DB ID of this student.
+            A str that is the edusign DB ID of this student.
         """
         response = requests.post(
             url=f"{self.BASE_URL}/student",
@@ -44,7 +44,7 @@ class Students(_EdusignAPI):
         # TODO: Change to return all results
         return student_id
 
-    def get_by_email(self, email_address):
+    def get_by_email(self, email_address: str) -> dict:
         response = requests.get(
             url=f"{self.BASE_URL}/student/by-email/{email_address}",
             headers=self.HEADERS,
@@ -62,7 +62,7 @@ class Students(_EdusignAPI):
 
         return data["result"]
 
-    def get_by_id(self, student_id):
+    def get_by_id(self, student_id: str):
         response = requests.get(
             url=f"{self.BASE_URL}/student/{student_id}",
             headers=self.HEADERS,
@@ -80,7 +80,7 @@ class Students(_EdusignAPI):
 
         return data["result"]
 
-    def get_all(self):
+    def get_all(self) -> dict:
         response = requests.get(
             url=f"{self.BASE_URL}/student",
             headers=self.HEADERS,
