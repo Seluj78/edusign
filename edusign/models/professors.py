@@ -5,7 +5,7 @@ from edusign.utils import EdusignAPIError
 
 
 class Professors(_EdusignAPI):
-    def create(self, first_name: str, last_name: str, email_address: str):
+    def create(self, first_name: str, last_name: str, email_address: str) -> str:
         """
         Function to create a professor in Edusign
 
@@ -17,7 +17,7 @@ class Professors(_EdusignAPI):
             The email address of the v
 
         :return:
-            An int that is the edusign DB ID of this professor.
+            A str that is the edusign DB ID of this professor.
         """
 
         # TODO: Refactor student and professor creation to use a single utility function
