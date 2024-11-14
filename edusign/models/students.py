@@ -97,3 +97,34 @@ class Students(_EdusignAPI):
             raise EdusignAPIError(response.status_code, response.text)
 
         return data["result"]
+
+    def patch(self, **kwargs) -> str:
+        """
+        Update a student in Edusign with given parameters.
+
+        :param kwargs:
+            The other optional student fields to update, must include at least ID, FIRSTNAME and LASTNAME
+
+        :return:
+            A message indicating success or an EdusignAPIError if there's an issue.
+        """
+
+        required_fields = ["ID", "FIRSTNAME", "LASTNAME"]
+        for field in required_fields:
+            if field not in kwargs:
+                raise ValueError(f"The required field '{field}' is missing.")
+
+        response = requests.patch(
+            url=f"{self.BASE_URL}/student/",
+            headers=self.HEADERS,
+            json={
+                "student": kwargs,
+            },
+        )
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            raise EdusignAPIError(response.status_code, response.text)
+
+        return "Student updated successfully"
